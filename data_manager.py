@@ -17,16 +17,18 @@ class DataManager:
 
     def next_batch(self):
         # get the 5 newest posts:
-        posts = self.crawler.crawl()
+        posts = self.crawler.crawl(amount=5)
         # try to upload them into DB:
         for post in posts:
             _post = self.dbh.find("REDDITPOSTS", post)
             if _post is None:
                 # the post is not in the DB, we can insert them:
                 self.dbh.upload_post("REDDITPOSTS", post)
+
             else:
                 logging.debug("Post with headline %s already exists..." % _post.headline)
+        self.dbh.summary("REDDITPOSTS")
         self.wait()
 
     def wait(self):
-        time.sleep(3)
+        time.sleep(30)

@@ -21,7 +21,7 @@ class RedditNewsCrawler:
 
         self.headers = {'User-Agent': 'Mozilla/5.0'}
 
-    def crawl(self):
+    def crawl(self, amount=5):
         """
         This function crawls the newest 5 posts on https://www.reddit.com/r/news/new/ and returns them as
         RedditPost object.
@@ -31,7 +31,7 @@ class RedditNewsCrawler:
         response = session.get(self.base_url, headers=self.headers)
         html = BeautifulSoup(response.text, 'html.parser')
         # find the current 5 newest post:
-        newest_posts = html.find_all("h3", {"class": "_eYtD2XCVieq6emjKBH3m"})[0:5]
+        newest_posts = html.find_all("h3", {"class": "_eYtD2XCVieq6emjKBH3m"})[0:amount]
         newest_posts_text = [post.text for post in newest_posts]
 
         posts = [RedditPost(headline=text, date=datetime.today().strftime('%Y-%m-%d'),

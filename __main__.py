@@ -4,4 +4,6 @@ from database_handler import DatabaseHandler
 
 if __name__ == '__main__':
     dm = DataManager()
-    dm.next_batch()
+    for i in range(5000):
+        print(i)
+        dm.next_batch()

@@ -16,7 +16,7 @@ class DatabaseHandler:
 
     def upload_post(self, table_name, post: RedditPost):
         result = self.db[table_name].insert_one(post.to_dict())
-        logging.debug("Inserted object with id %s." % result.inserted_id)
+        logging.debug("--Inserted object with text %s..." % post.headline)
 
     def find(self, table_name, post: RedditPost):
         post = self.db[table_name].find_one({"headline": post.headline,
@@ -25,3 +25,8 @@ class DatabaseHandler:
         if post is not None:
             post = RedditPost(headline=post['headline'], section=post['section'], date=post['date'], time=post['time'])
         return post
+
+    def summary(self, table_name):
+        count = self.db[table_name].count_documents({})
+        print("Number of documents: %d" % count)
+
