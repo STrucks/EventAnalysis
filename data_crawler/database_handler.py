@@ -2,8 +2,8 @@ import logging
 
 from pymongo import MongoClient
 
-from configurations.config_loader import ConfigLoader
-from models.reddit_post import RedditPost
+from data_crawler.configurations.config_loader import ConfigLoader
+from data_crawler.models.reddit_post import RedditPost
 
 
 class DatabaseHandler:

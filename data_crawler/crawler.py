@@ -1,12 +1,10 @@
 from datetime import datetime
-import time
 
 import requests
-import urllib.request
 from bs4 import BeautifulSoup
 
-from configurations.config_loader import ConfigLoader
-from models.reddit_post import RedditPost
+from data_crawler.configurations.config_loader import ConfigLoader
+from data_crawler.models.reddit_post import RedditPost
 
 
 class RedditNewsCrawler:

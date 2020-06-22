@@ -1,8 +1,8 @@
 import logging
 import time
 
-from crawler import RedditNewsCrawler
-from database_handler import DatabaseHandler
+from data_crawler.crawler import RedditNewsCrawler
+from data_crawler.database_handler import DatabaseHandler
 
 
 class DataManager:

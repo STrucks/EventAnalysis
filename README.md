@@ -13,4 +13,9 @@ TBA
 
 ### Setup:
 TBA
+
+#### Start the MongoDb as a Docker container:
+- install Docker
+- pull the MongoDB image (docker pull mongo), I used version 4.2.7
+- `docker run -d -p 27017-27019:27017-27019 --name mongodb --restart unless-stopped -v /home/ubuntu/data:/data/db mongo`
  
